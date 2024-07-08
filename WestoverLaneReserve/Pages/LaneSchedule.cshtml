@@ -11,10 +11,10 @@
     <h2>Grid of Buttons</h2>
     <div class="row">
         <div class="col">&nbsp;</div><!-- Empty column for label alignment -->
-        @for (int col = 1; col <= 7; col++)
+        @for (int col = 0; col < Model.WeekDates.Count; col++)
         {
             <div class="col text-center">
-                <h5>Column @col</h5>
+                <h5>@Model.WeekDates[col]</h5>
             </div>
         }
     </div>
@@ -25,7 +25,7 @@
             <div class="col d-flex align-items-center justify-content-center">
                 <h5>Row @row</h5>
             </div>
-            @for (int col = 1; col <= 7; col++)
+            @for (int col = 0; col < Model.WeekDates.Count; col++)
             {
                 <div class="col d-flex align-items-center justify-content-center">
                     <button type="button" class="btn btn-primary btn-block mb-2">Button @row, @col</button>
