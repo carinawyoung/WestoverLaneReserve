@@ -1,11 +1,3 @@
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/appsettings.Development.json
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/appsettings.json
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.staticwebassets.runtime.json
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.deps.json
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.runtimeconfig.json
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.dll
-/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.pdb
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.GeneratedMSBuildEditorConfig.editorconfig
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.AssemblyInfoInputs.cache
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.AssemblyInfo.cs
@@ -14,6 +6,14 @@
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.RazorAssemblyInfo.cache
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.RazorAssemblyInfo.cs
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.sourcelink.json
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/appsettings.Development.json
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/appsettings.json
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.staticwebassets.runtime.json
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.deps.json
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.runtimeconfig.json
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.dll
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/WestoverLaneReserve.pdb
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/staticwebassets.build.json
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/staticwebassets.development.json
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/staticwebassets/msbuild.WestoverLaneReserve.Microsoft.AspNetCore.StaticWebAssets.props
