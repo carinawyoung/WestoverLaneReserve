@@ -19,11 +19,11 @@
         }
     </div>
 
-    @for (int row = 1; row <= 12; row++)
+    @for (int row = 0; row < Model.Times.Count; row++)
     {
         <div class="row text-center align-items-center">
             <div class="col d-flex align-items-center justify-content-center">
-                <h5>Row @row</h5>
+                <h5>@Model.Times[row]</h5>
             </div>
             @for (int col = 0; col < Model.WeekDates.Count; col++)
             {

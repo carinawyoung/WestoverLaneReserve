@@ -7,13 +7,15 @@ namespace WestoverLaneReserve.Pages
     public class LaneScheduleModel : PageModel
     {
         public List<string> WeekDates { get; private set; } = new List<string>();
+        public List<string> Times { get; private set; } = new List<string>();
 
         public void OnGet()
         {
             WeekDates = GetCurrentWeekDates();
+            Times = GetTimes();
         }
 
-        private List<string> GetCurrentWeekDates()
+        private static List<string> GetCurrentWeekDates()
         {
             List<string> weekdates = new List<string>();
             DateTime today = DateTime.Today;
@@ -28,5 +30,18 @@ namespace WestoverLaneReserve.Pages
 
             return weekdates;
         }
+
+        private List<string> GetTimes()
+        {
+            List<string> times = new List<string>(); // make a new empty list
+            DateTime startTime = DateTime.Today.AddHours(6); //start time at 6:00 AM
+            for (int i = 0; i < 12; i++)
+            {
+                times.Add(startTime.AddHours(i).ToString("h:mm tt", CultureInfo.InvariantCulture));
+            }
+            return times;
+        }
+
+
     }
 }
