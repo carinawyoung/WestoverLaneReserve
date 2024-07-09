@@ -13,6 +13,14 @@ namespace WestoverLaneReserve.Pages
         public RegisterModel(ApplicationDbContext context)
         {
             _context = context;
+            // Customer = new Customer();
+            Customer = new Customer
+            {
+                FirstName = string.Empty,
+                LastName = string.Empty,
+                Email = string.Empty,
+                Password = string.Empty
+            };
         }
 
         [BindProperty]
