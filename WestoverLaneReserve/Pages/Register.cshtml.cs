@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WestoverLaneReserve.Data;
 using WestoverLaneReserve.Models;
+using System.Threading.Tasks;
 
 namespace WestoverLaneReserve.Pages
 {
@@ -26,9 +27,11 @@ namespace WestoverLaneReserve.Pages
         [BindProperty]
         public Customer Customer { get; set; }
 
+        [BindProperty]
+        public string ConfirmPassword { get; set; } = "";
+
         public void OnGet()
         {
-
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -37,6 +40,13 @@ namespace WestoverLaneReserve.Pages
             {
                 return Page();
             }
+
+            if (Customer.Password != ConfirmPassword)   // Server-side check for password matching
+            {
+                ModelState.AddModelError(string.Empty, "Passwords do not match.");
+                return Page();
+            }
+
 
             _context.Customers.Add(Customer);
             await _context.SaveChangesAsync();
