@@ -26,30 +26,29 @@
 
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="firstName" id="firstName"
-                                                placeholder="First name" required>
-                                            <label for="firstName" class="form-label">First name</label>
+                                            <input asp-for="Customer.FirstName" placeholder="First Name" required>
+                                            <label asp-for="Customer.FirstName" class="form-label">First name</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="lastName" id="lastName"
+                                            <input asp-for="Customer.LastName" class="form-control"
                                                 placeholder="Last name" required>
-                                            <label for="lastName" class="form-label">Last name</label>
+                                            <label asp-for="Customer.LastName" class="form-label">Last name</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" name="email" id="email"
+                                            <input asp-for="Customer.Email" class="form-control" type="email"
                                                 placeholder="name@example.com" required>
-                                            <label for="email" class="form-label">Email</label>
+                                            <label asp-for="Customer.Email" class="form-label">Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" name="password" id="password"
-                                                value="" placeholder="Password" required>
-                                            <label for="password" class="form-label">Password</label>
+                                            <input asp-for="Customer.Password" type="password" class="form-control"
+                                                placeholder="Password" required>
+                                            <label asp-for="Customer.Password" class="form-label">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
