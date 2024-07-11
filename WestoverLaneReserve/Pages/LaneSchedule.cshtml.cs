@@ -24,6 +24,8 @@ namespace WestoverLaneReserve.Pages
 
         public void OnGet()
         {
+            ViewData["ShowHeader"] = true; // Do not show header on this page
+
             WeekDates = GetCurrentWeekDates();
             Times = GetTimes();
             EnsureTimeSlotAvailability();  // Ensure time slots are intitalized 

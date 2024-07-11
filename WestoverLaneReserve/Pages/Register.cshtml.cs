@@ -31,6 +31,7 @@ namespace WestoverLaneReserve.Pages
 
         public void OnGet()
         {
+            ViewData["ShowHeader"] = false; // Do not show header on this page
         }
 
         public async Task<IActionResult> OnPostAsync()
