@@ -27,7 +27,7 @@ namespace WestoverLaneReserve.Pages
 
             if (customer == null)
             {
-                ViewData["ErrorMessage"] = "Wrong username or password";
+                ViewData["ErrorMessage"] = "Wrong email or password";
                 return Page();
             }
 
