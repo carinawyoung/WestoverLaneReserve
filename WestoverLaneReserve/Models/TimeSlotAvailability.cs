@@ -11,11 +11,11 @@ namespace WestoverLaneReserve.Models
         //[Column(Order = 1, TypeName = "Date")]
         //[Column(TypeName ="Date")] // I want it to store only the date part of the datetime
         // public DateTime Date { get; set; }  // Composite key part 1
-        public string Date { get; set; }
+        public required string Date { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        public string Time { get; set; }
+        public required string Time { get; set; }
         //[Column(Order = 2, TypeName = "Time")]
         //public DateTime Time { get; set; }  // Composite key part 2
 

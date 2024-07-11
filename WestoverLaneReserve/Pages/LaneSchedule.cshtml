@@ -27,8 +27,16 @@
             </div>
             @for (int col = 0; col < Model.WeekDates.Count; col++)
             {
+                string formattedDate = DateTime.ParseExact(Model.WeekDates[col], "ddd M/d",
+                System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                string formattedTime = DateTime.ParseExact(Model.Times[row], "h:mm tt",
+                System.Globalization.CultureInfo.InvariantCulture).ToString("HH:mm");
+                int lanesAvailable = Model.LaneAvailability[formattedDate][formattedTime];
+
+
                 <div class="col d-flex align-items-center justify-content-center">
-                    <button type="button" class="btn btn-primary btn-block mb-2">Button @row, @col</button>
+                    <button type="button" class="btn btn-primary btn-block mb-2">
+                        @lanesAvailable Lanes Available</button>
                 </div>
             }
 
