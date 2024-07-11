@@ -14,7 +14,6 @@ namespace WestoverLaneReserve.Pages
         public RegisterModel(ApplicationDbContext context)
         {
             _context = context;
-            // Customer = new Customer();
             Customer = new Customer
             {
                 FirstName = string.Empty,
@@ -28,7 +27,7 @@ namespace WestoverLaneReserve.Pages
         public Customer Customer { get; set; }
 
         [BindProperty]
-        public string ConfirmPassword { get; set; } = "";
+        public string ConfirmPassword { get; set; } //= "";
 
         public void OnGet()
         {
@@ -47,9 +46,17 @@ namespace WestoverLaneReserve.Pages
                 return Page();
             }
 
-
-            _context.Customers.Add(Customer);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Customers.Add(Customer);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (log it, display an error message, etc.)
+                ModelState.AddModelError(string.Empty, "An error occurred while saving your registration.");
+                return Page(); // Or handle the error appropriately 
+            }
 
             return RedirectToPage("/Index");
         }
