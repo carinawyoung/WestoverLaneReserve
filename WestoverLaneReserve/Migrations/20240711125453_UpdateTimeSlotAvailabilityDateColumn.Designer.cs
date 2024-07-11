@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WestoverLaneReserve.Data;
 
@@ -10,9 +11,11 @@ using WestoverLaneReserve.Data;
 namespace WestoverLaneReserve.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240711125453_UpdateTimeSlotAvailabilityDateColumn")]
+    partial class UpdateTimeSlotAvailabilityDateColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -66,12 +69,12 @@ namespace WestoverLaneReserve.Migrations
 
             modelBuilder.Entity("WestoverLaneReserve.Models.TimeSlotAvailability", b =>
                 {
-                    b.Property<string>("Date")
-                        .HasColumnType("TEXT")
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("Date")
                         .HasColumnOrder(1);
 
-                    b.Property<string>("Time")
-                        .HasColumnType("TEXT")
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("Time")
                         .HasColumnOrder(2);
 
                     b.Property<int>("LanesAvailable")

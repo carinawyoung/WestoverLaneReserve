@@ -29,18 +29,25 @@ namespace WestoverLaneReserve.Pages
             {
                 foreach (var time in Times)
                 {
-                    DateTime date = DateTime.ParseExact(weekDate, "ddd M/d", CultureInfo.InvariantCulture);
-                    DateTime timeOfDay = DateTime.ParseExact(time, "h:mm tt", CultureInfo.InvariantCulture);
+                    // DateTime date = DateTime.ParseExact(weekDate, "ddd M/d", CultureInfo.InvariantCulture);
+                    // DateTime timeOfDay = DateTime.ParseExact(time, "h:mm tt", CultureInfo.InvariantCulture);
+
+                    string formattedDate = DateTime.ParseExact(weekDate, "ddd M/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                    string formattedTime = DateTime.ParseExact(time, "h:mm tt", CultureInfo.InvariantCulture).ToString("HH:mm");
+
 
                     // Check if entry already exists
                     if (!_context.TimeSlotAvailabilities.Any(t =>
-                    t.Date.Date == date.Date && t.Time.TimeOfDay == timeOfDay.TimeOfDay))
+                        // t.Date.Date == date.Date && t.Time.TimeOfDay == timeOfDay.TimeOfDay))
+                        t.Date == formattedDate && t.Time == formattedTime))
                     {
                         // Create new TimeSlotAvailability entry
                         var availability = new TimeSlotAvailability
                         {
-                            Date = date,
-                            Time = timeOfDay,
+                            Date = formattedDate,
+                            Time = formattedTime,
+                            // Date = dateTime,
+                            // Time = timeOfDay,
                             LanesAvailable = 6  // There are six lanes at the pool
                         };
 
