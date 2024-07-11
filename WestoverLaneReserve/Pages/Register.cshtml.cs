@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WestoverLaneReserve.Data;
 using WestoverLaneReserve.Models;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace WestoverLaneReserve.Pages
 {
@@ -10,10 +11,13 @@ namespace WestoverLaneReserve.Pages
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<RegisterModel> _logger;
 
-        public RegisterModel(ApplicationDbContext context)
+        public RegisterModel(ApplicationDbContext context, ILogger<RegisterModel> logger)
         {
             _context = context;
+            _logger = logger;
+
             Customer = new Customer
             {
                 FirstName = string.Empty,
@@ -27,7 +31,8 @@ namespace WestoverLaneReserve.Pages
         public Customer Customer { get; set; }
 
         [BindProperty]
-        public string ConfirmPassword { get; set; } //= "";
+        [Required(ErrorMessage = "Confirm password is required.")]
+        public string ConfirmPassword { get; set; } = string.Empty;
 
         public void OnGet()
         {
@@ -55,6 +60,7 @@ namespace WestoverLaneReserve.Pages
             catch (Exception ex)
             {
                 // Handle the exception (log it, display an error message, etc.)
+                _logger.LogError(ex, "An error occurred while registering a new customer");
                 ModelState.AddModelError(string.Empty, "An error occurred while saving your registration.");
                 return Page(); // Or handle the error appropriately 
             }
@@ -62,5 +68,4 @@ namespace WestoverLaneReserve.Pages
             return RedirectToPage("/Index");
         }
     }
-
 }
