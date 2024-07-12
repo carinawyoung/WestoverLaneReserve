@@ -26,15 +26,14 @@
                         @if (!ModelState.IsValid)
                         {
                             <div class="alert alert-danger" role="alert">
-                                @ViewData["ErrorMessage"]
+                                @foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    @Html.Raw(modelError.ErrorMessage + "<br/>")
+                                }
+                                @* @ViewData["ErrorMessage"] *@
                             </div>
                         }
-                        else if (ViewData["ErrorMessage"] != null)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                @ViewData["ErrorMessage"]
-                            </div>
-                        }
+
                         @* <div class="text-center mb-3">
                         <a href="#!">
                         <img src="./assets/img/bsb-logo.svg" alt="BootstrapBrain Logo" width="175"
