@@ -21,6 +21,13 @@ body {
   margin-bottom: 60px;
 }
 
+/* Start of code I added */
+
 .past-time { 
   background-color: gray;
+}
+
+#Error-message {
+  transition: opacity 1s ease-out;
+  opacity: 1;
 }

@@ -134,28 +134,39 @@ namespace WestoverLaneReserve.Pages
             // Check if there are lanes available and decrement
             if (timeSlotAvailability != null && timeSlotAvailability.LanesAvailable > 0)
             {
-                timeSlotAvailability.LanesAvailable -= 1;  // Decrement the number of available lanes
+                // Check for an existing reservation for this user, date, and time
+                bool reservationExists = _context.LaneReservations.Any(r =>
+                    r.CustomerId == _userManager.GetUserId(User) &&
+                    r.Date == date &&
+                    r.Time == time);
 
-                // Create a new reservation
-                var reservation = new LaneReservation
+                if (reservationExists)
                 {
-                    CustomerId = _userManager.GetUserId(User), // uses the private field _userManager
-                    Date = date,
-                    Time = time
-                };
+                    TempData["ErrorMessage"] = "You already have a reservation for this date and time.";
+                    return RedirectToPage();
+                }
+                else
+                {
+                    // Create a new reservation
+                    var reservation = new LaneReservation
+                    {
+                        CustomerId = _userManager.GetUserId(User), // uses the private field _userManager
+                        Date = date,
+                        Time = time
+                    };
 
-                // Add to the database
-                _context.LaneReservations.Add(reservation);
+                    // Add to the database
+                    _context.LaneReservations.Add(reservation);
 
-                // Save all the changes to the database
-                await _context.SaveChangesAsync();
+                    // Decrement the number of available lanes
+                    timeSlotAvailability.LanesAvailable -= 1;
 
+                    // Save all the changes to the database
+                    await _context.SaveChangesAsync();
+                }
             }
-
-
 
             return RedirectToPage();
         }
-
     }
 }

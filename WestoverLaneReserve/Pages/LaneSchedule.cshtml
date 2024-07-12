@@ -5,6 +5,13 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div id="Error-message" class="alert alert-danger" role="alert">
+    @TempData["ErrorMessage"]
+</div>
+}
+
 <p>This is the schedule page</p>
 
 <div class="container">
@@ -61,4 +68,19 @@
     function confirmReservation(date, time) {
         return confirm(`Make a reservation for ${date} at ${time}?`);
     }
+
+    // Script to fade out the error message
+    window.onload = function () {
+        setTimeout(function () {
+            var errorMessage = document.getElementById('Error-message');
+            if (errorMessage) {
+                errorMessage.style.opacity = 0; // Trigger fade out
+                // Set the element to 'display: none' after the fade-out duration
+                setTimeout(function () {
+                    errorMessage.style.display = 'none';
+                }, 1000); // This should match the CSS transition time
+            }
+        }, 5000); // Time after which fade out starts
+    };
+
 </script>
