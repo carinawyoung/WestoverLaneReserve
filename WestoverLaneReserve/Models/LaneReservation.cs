@@ -8,7 +8,9 @@ namespace WestoverLaneReserve.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReservationId { get; private set; }
-        public int CustomerId { get; set; }
+        [ForeignKey("CustomerApplicationUser")]
+        public string CustomerId { get; set; }
+        public CustomerApplicationUser CustomerApplicationUser { get; set; }
         public DateTime Date { get; set; }
         public DateTime Time { get; set; }
 
