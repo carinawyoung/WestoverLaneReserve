@@ -33,11 +33,18 @@
                 System.Globalization.CultureInfo.InvariantCulture).ToString("HH:mm");
                 int lanesAvailable = Model.LaneAvailability[formattedDate][formattedTime];
 
+                var slotDateTime = DateTime.ParseExact($"{Model.WeekDates[col]} {Model.Times[row]}", "ddd M/d h:mm tt",
+                System.Globalization.CultureInfo.InvariantCulture);
+                var isPast = slotDateTime < DateTime.Now;
+                var buttonClass = isPast ? "btn btn-secondary btn-block md-2" : "btn btn-primary btn-block mb-2";
+
                 <div class="col d-flex align-items-center justify-content-center">
                     <!-- each button is wrapped in a form to allow submission -->
                     <form method="post" asp-page-handler="Reserve">
                         <button type="submit" class="btn btn-primary btn-block mb-2" name="reserve"
-                            value="@formattedDate,@formattedTime">
+                            value="@formattedDate,@formattedTime"
+                            onclick="return confirmReservation('@Model.WeekDates[col]', '@Model.Times[row]');"
+                            disabled="@isPast">
                             @lanesAvailable Lanes Available
                         </button>
                     </form>
@@ -49,3 +56,9 @@
     }
 
 </div>
+
+<script>
+    function confirmReservation(date, time) {
+        return confirm(`Make a reservation for ${date} at ${time}?`);
+    }
+</script>

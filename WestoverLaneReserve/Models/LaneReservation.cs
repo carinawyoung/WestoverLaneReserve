@@ -11,8 +11,8 @@ namespace WestoverLaneReserve.Models
         [ForeignKey("CustomerApplicationUser")]
         public string CustomerId { get; set; }
         public CustomerApplicationUser CustomerApplicationUser { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
+        public required string Date { get; set; }
+        public required string Time { get; set; }
 
     }
 }

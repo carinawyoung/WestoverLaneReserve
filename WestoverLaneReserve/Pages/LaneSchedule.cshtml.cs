@@ -125,20 +125,34 @@ namespace WestoverLaneReserve.Pages
         {
             // Split the reserve string to extract date and time
             var parts = reserve.Split(',');
-            var date = DateTime.Parse(parts[0]);
-            var time = DateTime.Parse(parts[1]);
+            var date = parts[0];
+            var time = parts[1];
 
-            // Create a new reservation
-            var reservation = new LaneReservation
+            // Fetch the corresponding TimeSlotAvailability
+            var timeSlotAvailability = _context.TimeSlotAvailabilities.FirstOrDefault(t => t.Date == date && t.Time == time);
+
+            // Check if there are lanes available and decrement
+            if (timeSlotAvailability != null && timeSlotAvailability.LanesAvailable > 0)
             {
-                CustomerId = _userManager.GetUserId(User), // uses the private field _userManager
-                Date = date,
-                Time = time
-            };
+                timeSlotAvailability.LanesAvailable -= 1;  // Decrement the number of available lanes
 
-            // Add to the database
-            _context.LaneReservations.Add(reservation);
-            await _context.SaveChangesAsync();
+                // Create a new reservation
+                var reservation = new LaneReservation
+                {
+                    CustomerId = _userManager.GetUserId(User), // uses the private field _userManager
+                    Date = date,
+                    Time = time
+                };
+
+                // Add to the database
+                _context.LaneReservations.Add(reservation);
+
+                // Save all the changes to the database
+                await _context.SaveChangesAsync();
+
+            }
+
+
 
             return RedirectToPage();
         }

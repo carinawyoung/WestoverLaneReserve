@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.past-time { 
+  background-color: gray;
+}
