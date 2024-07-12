@@ -35,7 +35,7 @@ namespace WestoverLaneReserve.Pages
             }
 
 
-            //await LoadUser(); // Load user information
+            await LoadUser(); // Load user information so name will be in header
         }
 
 

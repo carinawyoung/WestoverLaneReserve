@@ -30,17 +30,17 @@
                         <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li> *@
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                            </li>
+                            @* <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li> *@
                         </ul>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <div class="navbar-nav">
-                                <a class="nav-link text-dark">Hello, @ViewData["UserFirstName"] @ViewData["UserLastName"]</a>
+                                <a class="nav-link text-dark"> @ViewData["UserFirstName"] @ViewData["UserLastName"]</a>
                             </div>
                         }
 
@@ -50,6 +50,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/LaneSchedule">Lane Schedule</a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="post" asp-page="/Index" asp-page-handler="Logout" class="form-in-line">
+                                    <button type="submit" class="nav-link btn btn-link text-dark p-8 border-0"
+                                        style="background:none;">Log Out</button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -66,7 +72,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - WestoverLaneReserve - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2024 - WestoverLaneReserve
         </div>
     </footer>
 

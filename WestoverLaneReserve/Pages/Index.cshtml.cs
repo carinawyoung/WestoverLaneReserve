@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using WestoverLaneReserve.Models;
+using Microsoft.AspNetCore.Authentication;
 
 namespace WestoverLaneReserve.Pages
 {
@@ -45,6 +46,13 @@ namespace WestoverLaneReserve.Pages
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
 
             return Page();
+        }
+
+
+        public async Task<IActionResult> OnPostLogoutAsync()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToPage("/Index");
         }
     }
 }

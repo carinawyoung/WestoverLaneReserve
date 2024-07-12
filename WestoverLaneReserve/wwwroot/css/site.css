@@ -31,3 +31,8 @@ body {
   transition: opacity 1s ease-out;
   opacity: 1;
 }
+
+/* .nav-link .btn {
+  display: inline-block;  
+  vertical-align: middle;
+} */
