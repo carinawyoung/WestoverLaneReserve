@@ -12,10 +12,12 @@ namespace WestoverLaneReserve.Pages
     public class LaneScheduleModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext
+        private readonly UserManager<CustomerApplicationUser> _userManager;  // Field to store UserManager
 
         public LaneScheduleModel(ApplicationDbContext context, UserManager<CustomerApplicationUser> userManager) : base(userManager)  // pass userManager to the base model 
         {
             _context = context; // Assign parameter to the field
+            _userManager = userManager; // Asign UserManager to the field
         }
 
 
@@ -24,7 +26,7 @@ namespace WestoverLaneReserve.Pages
         public Dictionary<string, Dictionary<string, int>> LaneAvailability { get; private set; } = new Dictionary<string, Dictionary<string, int>>();
 
 
-        public async void OnGet()
+        public async Task OnGet()
         {
             ViewData["ShowHeader"] = true; // Do not show header on this page
             await LoadUser(); // Load user information
@@ -91,40 +93,6 @@ namespace WestoverLaneReserve.Pages
                 }
             }
         }
-        //     // Create TimeSLotAvailability entries if they don't already exist
-        //     foreach (var weekDate in WeekDates)
-        //     {
-        //         foreach (var time in Times)
-        //         {
-        //             // DateTime date = DateTime.ParseExact(weekDate, "ddd M/d", CultureInfo.InvariantCulture);
-        //             // DateTime timeOfDay = DateTime.ParseExact(time, "h:mm tt", CultureInfo.InvariantCulture);
-
-        //             string formattedDate = DateTime.ParseExact(weekDate, "ddd M/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
-        //             string formattedTime = DateTime.ParseExact(time, "h:mm tt", CultureInfo.InvariantCulture).ToString("HH:mm");
-
-
-        //             // Check if entry already exists
-        //             if (!_context.TimeSlotAvailabilities.Any(t =>
-        //                 // t.Date.Date == date.Date && t.Time.TimeOfDay == timeOfDay.TimeOfDay))
-        //                 t.Date == formattedDate && t.Time == formattedTime))
-        //             {
-        //                 // Create new TimeSlotAvailability entry
-        //                 var availability = new TimeSlotAvailability
-        //                 {
-        //                     Date = formattedDate,
-        //                     Time = formattedTime,
-        //                     // Date = dateTime,
-        //                     // Time = timeOfDay,
-        //                     LanesAvailable = 6  // There are six lanes at the pool
-        //                 };
-
-        //                 _context.TimeSlotAvailabilities.Add(availability);
-        //             }
-        //         }
-        //     }
-
-        //     _context.SaveChanges();   // Save changes to the database
-        // }
 
         private List<string> GetCurrentWeekDates()
         {
@@ -152,5 +120,28 @@ namespace WestoverLaneReserve.Pages
             }
             return times;
         }
+
+        public async Task<IActionResult> OnPostAsync(string reserve)
+        {
+            // Split the reserve string to extract date and time
+            var parts = reserve.Split(',');
+            var date = DateTime.Parse(parts[0]);
+            var time = DateTime.Parse(parts[1]);
+
+            // Create a new reservation
+            var reservation = new LaneReservation
+            {
+                CustomerId = _userManager.GetUserId(User), // uses the private field _userManager
+                Date = date,
+                Time = time
+            };
+
+            // Add to the database
+            _context.LaneReservations.Add(reservation);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage();
+        }
+
     }
 }

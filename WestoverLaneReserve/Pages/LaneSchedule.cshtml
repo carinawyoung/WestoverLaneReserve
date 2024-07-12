@@ -33,10 +33,15 @@
                 System.Globalization.CultureInfo.InvariantCulture).ToString("HH:mm");
                 int lanesAvailable = Model.LaneAvailability[formattedDate][formattedTime];
 
-
                 <div class="col d-flex align-items-center justify-content-center">
-                    <button type="button" class="btn btn-primary btn-block mb-2">
-                        @lanesAvailable Lanes Available</button>
+                    <!-- each button is wrapped in a form to allow submission -->
+                    <form method="post" asp-page-handler="Reserve">
+                        <button type="submit" class="btn btn-primary btn-block mb-2" name="reserve"
+                            value="@formattedDate,@formattedTime">
+                            @lanesAvailable Lanes Available
+                        </button>
+                    </form>
+
                 </div>
             }
 
