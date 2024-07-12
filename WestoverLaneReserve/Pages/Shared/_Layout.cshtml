@@ -30,6 +30,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                             </li>
                         </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="navbar-nav">
+                                <a class="nav-link text-dark">Hello, @ViewData["UserFirstName"] @ViewData["UserLastName"]</a>
+                            </div>
+                        }
                     </div>
                 </div>
             </nav>

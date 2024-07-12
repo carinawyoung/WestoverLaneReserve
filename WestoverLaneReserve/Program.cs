@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -47,6 +48,7 @@ app.UseAuthentication(); // Ensure authentication is used
 app.UseAuthorization();
 
 app.MapRazorPages();
+
 
 // Ensure database is created and migrations are applied:
 async Task InitializeApplicationAsync(IHost app)

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
@@ -7,11 +8,12 @@ using WestoverLaneReserve.Models;
 
 namespace WestoverLaneReserve.Pages
 {
-    public class LaneScheduleModel : PageModel
+    //public class LaneScheduleModel : PageModel
+    public class LaneScheduleModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext
 
-        public LaneScheduleModel(ApplicationDbContext context)  // 
+        public LaneScheduleModel(ApplicationDbContext context, UserManager<CustomerApplicationUser> userManager) : base(userManager)  // pass userManager to the base model 
         {
             _context = context; // Assign parameter to the field
         }
@@ -22,9 +24,10 @@ namespace WestoverLaneReserve.Pages
         public Dictionary<string, Dictionary<string, int>> LaneAvailability { get; private set; } = new Dictionary<string, Dictionary<string, int>>();
 
 
-        public void OnGet()
+        public async void OnGet()
         {
             ViewData["ShowHeader"] = true; // Do not show header on this page
+            await LoadUser(); // Load user information
 
             WeekDates = GetCurrentWeekDates();
             Times = GetTimes();
