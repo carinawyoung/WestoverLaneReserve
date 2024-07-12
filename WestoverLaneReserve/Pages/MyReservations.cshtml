@@ -8,13 +8,13 @@
 
 @if (Model.Reservations.Any())
 {
-    //<ul>
+    <ul>
     @foreach (var reservation in Model.Reservations)
-    {
-        //<li>@reservation.Date @reservation.Time</li>
-        <p>@reservation.Date @reservation.Time</p>
-    }
-    //</ul>
+        {
+            <li>@reservation.Date @reservation.Time</li>
+            // <p>@reservation.Date @reservation.Time</p>
+        }
+    </ul>
 }
 else
 {
