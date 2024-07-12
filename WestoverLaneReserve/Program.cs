@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using WestoverLaneReserve.Data;
+using WestoverLaneReserve.Models; // Ensure this is added if ApplicationUser is in this namespace
+using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,14 +15,27 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Configure Identity
+builder.Services.AddDefaultIdentity<CustomerApplicationUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    // Configure other options as needed
+})
+.AddEntityFrameworkStores<ApplicationDbContext>();
+
+// Optional: Configure Identity options
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Password settings, lockout settings, etc.
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios.
 }
 
 app.UseHttpsRedirection();
@@ -25,19 +43,27 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // Ensure authentication is used
 app.UseAuthorization();
 
 app.MapRazorPages();
 
-// Make sure database is created and migrations are applied:
-using (var scope = app.Services.CreateScope())
+// Ensure database is created and migrations are applied:
+async Task InitializeApplicationAsync(IHost app)
 {
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<ApplicationDbContext>();
-    context.Database.Migrate();
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        await context.Database.MigrateAsync(); // Await the migration
 
-    // Call the SeedData.Initialize method to seed the database
-    SeedData.Initialize(services);
+        // Optionally seed the database (ensure SeedData class is appropriately defined)
+        SeedData.Initialize(services);
+    }
 }
 
+// Call the initialize method and run the application
+await InitializeApplicationAsync(app);
+
 app.Run();
+

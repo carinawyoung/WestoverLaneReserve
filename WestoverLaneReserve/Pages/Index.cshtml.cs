@@ -3,18 +3,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WestoverLaneReserve.Data;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using WestoverLaneReserve.Models;
 
 namespace WestoverLaneReserve.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly ApplicationDbContext _dbContext;
+        private readonly SignInManager<CustomerApplicationUser> _signInManager;
 
-        public IndexModel(ILogger<IndexModel> logger, ApplicationDbContext dbContext)
+        public IndexModel(ILogger<IndexModel> logger, SignInManager<CustomerApplicationUser> signInManager)
         {
             _logger = logger;
-            _dbContext = dbContext;
+            _signInManager = signInManager;
         }
 
         public void OnGet()
@@ -22,18 +24,27 @@ namespace WestoverLaneReserve.Pages
             ViewData["ShowHeader"] = false; // Do not show header on this page
         }
 
-        public IActionResult OnPost(string email, string password)
+        public async Task<IActionResult> OnPostAsync(string email, string password)
         {
-            var customer = _dbContext.Customers.SingleOrDefault(c => c.Email == email && c.Password == password);
 
-            if (customer == null)
+            // Check if the model state is valid
+            if (!ModelState.IsValid)
             {
-                ViewData["ErrorMessage"] = "Wrong email or password";
-                return Page();
+                // Add an error message or handle the error appropriately
+                ModelState.AddModelError(string.Empty, "Please check your input and try again.");
+                return Page(); // Return to the current page with validation summaries
             }
 
-            // Authentication successful, redirect to LaneSchedule page
-            return RedirectToPage("/LaneSchedule");
+            var result = await _signInManager.PasswordSignInAsync(email, password, isPersistent: false, lockoutOnFailure: false);
+
+            if (result.Succeeded)
+            {
+                return RedirectToPage("LaneSchedule");
+            }
+
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
+            return Page();
         }
     }
 }

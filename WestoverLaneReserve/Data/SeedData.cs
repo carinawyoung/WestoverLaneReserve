@@ -1,40 +1,49 @@
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using WestoverLaneReserve.Data;
 using WestoverLaneReserve.Models;
 
 public static class SeedData
 {
-    public static void Initialize(IServiceProvider serviceProvider)
+    public static async Task Initialize(IServiceProvider serviceProvider)
     {
-        using (var context = new ApplicationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
+        using (var scope = serviceProvider.CreateScope())
         {
-            // Look for any customers
-            if (context.Customers.Any())
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<CustomerApplicationUser>>();
+
+            // Check if any users exist
+            if (!userManager.Users.Any())
             {
-                return;   // database has been seeded
-            }
+                var users = new CustomerApplicationUser[]
+                {
+                    new CustomerApplicationUser
+                    {
+                        UserName = "karnold@example.com",
+                        Email = "karnold@example.com",
+                        FirstName = "Kyisha",
+                        LastName = "Arnold"
+                    },
+                    new CustomerApplicationUser
+                    {
+                        UserName = "dmartin@example.com",
+                        Email = "dmartin@example.com",
+                        FirstName = "Betty",
+                        LastName = "Martinez"
+                    }
+                };
 
-            context.Customers.AddRange(
-                new Customer
+                foreach (var user in users)
                 {
-                    FirstName = "Kyisha",
-                    LastName = "Arnold",
-                    Email = "karnold@example.come",
-                    Password = "Password123!"
-                },
-                new Customer
-                {
-                    FirstName = "Betty",
-                    LastName = "Martinez",
-                    Email = "dmartin@example.com",
-                    Password = "Password321!"
+                    var result = await userManager.CreateAsync(user, "Password123!"); // Use a generic password for seeding, consider a more secure approach for production
+                    if (!result.Succeeded)
+                    {
+                        throw new InvalidOperationException("Failed to create default users.");
+                    }
                 }
-            );
-
-            context.SaveChanges();
+            }
         }
     }
 }

@@ -25,37 +25,39 @@
 
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Customer.FirstName" class="form-control"
-                                            placeholder="First Name" required>
-                                        <label asp-for="Customer.FirstName" class="form-label">First name</label>
+                                        <input asp-for="Input.FirstName" class="form-control" placeholder="First Name"
+                                            required>
+                                        <label asp-for="Input.FirstName" class="form-label">First name</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Customer.LastName" class="form-control"
-                                            placeholder="Last name" required>
-                                        <label asp-for="Customer.LastName" class="form-label">Last name</label>
+                                        <input asp-for="Input.LastName" class="form-control" placeholder="Last name"
+                                            required>
+                                        <label asp-for="Input.LastName" class="form-label">Last name</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Customer.Email" class="form-control" type="email"
+                                        <input asp-for="Input.Email" class="form-control" type="email"
                                             placeholder="name@example.com" required>
-                                        <label asp-for="Customer.Email" class="form-label">Email</label>
+                                        <label asp-for="Input.Email" class="form-label">Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Customer.Password" type="password" class="form-control"
+                                        <input asp-for="Input.Password" type="password" class="form-control"
                                             id="Password" placeholder="Password" required>
-                                        <label asp-for="Customer.Password" class="form-label">Password</label>
+                                        <label asp-for="Input.Password" class="form-label">Password</label>
+                                        <div id="passwordFeedback" style="color: red;"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword"
-                                            placeholder="Confirm Password" required>
-                                        <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                                        <input asp-for="Input.ConfirmPassword" type="password" class="form-control"
+                                            id="ConfirmPassword" placeholder="Confirm Password" required>
+                                        <label asp-for="Input.ConfirmPassword" class="form-label">Confirm
+                                            Password</label>
                                     </div>
                                 </div>
                                 <div id="passwordMismatch" style="display:none; color:red;">
@@ -67,8 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <p class="m-0 text-secondary text-center">Already have an account? <a
-                                            href="/Index" class="link-primary text-decoration-none">Sign in</a></p>
+                                    <p class="m-0 text-secondary text-center">Already have an account? <a href="/Index"
+                                            class="link-primary text-decoration-none">Sign in</a></p>
                                 </div>
                             </div>
                         </form>
@@ -81,19 +83,34 @@
 
 
 @section Scripts {
-            <script>
-                function checkPasswords() {
-                    var password = document.getElementById("Password").value;
-                    var confirmPassword = document.getElementById("ConfirmPassword").value;
-                    if (password !== confirmPassword) {
-                        document.getElementById("passwordMismatch").style.display = "block";
-                        return false;
-                    } else {
-                        document.getElementById("passwordMismatch").style.display = "none";
-                        return true;
-                    }
-                }
-            </script>
+    <script>
+        function checkPasswords() {
+            var password = document.getElementById("Password").value;
+            var confirmPassword = document.getElementById("ConfirmPassword").value;
+            if (password !== confirmPassword) {
+                document.getElementById("passwordMismatch").style.display = "block";
+                return false;
+            } else {
+                document.getElementById("passwordMismatch").style.display = "none";
+                return true;
+            }
+        }
+
+        // New function to provide real-time validation feedback
+        document.getElementById('Password').addEventListener('input', function (e) {
+            var password = e.target.value;
+            var messages = [];
+            if (password.length < 8) messages.push("Password must be at least 8 characters.");
+            if (!/[A-Z]/.test(password)) messages.push("Password must include an uppercase letter.");
+            if (!/[a-z]/.test(password)) messages.push("Password must include a lowercase letter.");
+            if (!/[0-9]/.test(password)) messages.push("Password must include a digit.");
+            if (!/[^A-Za-z0-9]/.test(password)) messages.push("Password must include a special character.");
+
+            document.getElementById('passwordFeedback').innerHTML = messages.join('<br>');
+            // Optionally, adjust the form submission logic based on the feedback
+        });
+
+    </script>
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
