@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using WestoverLaneReserve.Data;
 using WestoverLaneReserve.Models;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace WestoverLaneReserve.Pages
 {
@@ -34,10 +36,21 @@ namespace WestoverLaneReserve.Pages
                                         .ToList();
             }
 
-
             await LoadUser(); // Load user information so name will be in header
         }
 
+        public async Task<IActionResult> OnPostCancelAsync(int id)
+        {
+            var reservation = await _context.LaneReservations.FindAsync(id);
+
+            if (reservation != null)
+            {
+                _context.LaneReservations.Remove(reservation);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("/MyReservations");
+        }
 
     }
 }
