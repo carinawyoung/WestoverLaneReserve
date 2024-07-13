@@ -6,7 +6,7 @@
 
 @using System.Globalization;
 
-<h1>@ViewData["Title"]</h1>
+<h2 class="page-header">@ViewData["Title"]</h2>
 
 @if (Model.Reservations.Any())
 {
@@ -17,13 +17,16 @@
             var parsedDate = DateTime.ParseExact(reservation.Date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             var parsedTime = DateTime.ParseExact(reservation.Time, "HH:mm", CultureInfo.InvariantCulture);
 
-            <li id="reservation-line">
-                @parsedDate.ToString("dddd, MMMM d")
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @*add space here for formatting reasons*@
-                @parsedTime.ToString("h:mm tt")
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <form method="post" asp-page-handler="Cancel" asp-route-id="@reservation.ReservationId">
-                    <button type="submit">Cancel</button>
+            <li class="reservation-line">
+                <span>
+                    @parsedDate.ToString("dddd, MMMM d")
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @*add space here for formatting reasons*@
+                    @parsedTime.ToString("h:mm tt")
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @*add space here for formatting reasons*@
+                </span>
+                @* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *@
+                <form method="post" asp-page-handler="Cancel" asp-route-id="@reservation.ReservationId" class="cancel-form">
+                    <button type="submit" class="cancel-button">Cancel</button>
                 </form>
             </li>
         }
