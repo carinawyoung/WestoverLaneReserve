@@ -82,11 +82,23 @@ p {
 
 .change-week {
   margin: 2rem;
+}
 
+.change-week-btn {
+  background-color: rgb(0, 66, 137);
+  border-color: rgb(0, 66, 137);
+}
+
+.change-week-btn:hover {
+  background-color: rgb(0, 83, 171);
 }
 
 .responsive-image {
   max-width: 100%;
   height: auto;
   margin-top: 1.5rem;
+}
+
+.nav-item {
+  color: #346ade;
 }
