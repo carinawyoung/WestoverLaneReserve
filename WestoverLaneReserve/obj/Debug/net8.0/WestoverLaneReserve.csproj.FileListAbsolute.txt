@@ -135,3 +135,4 @@
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.pdb
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/WestoverLaneReserve.genruntimeconfig.cache
 /Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/obj/Debug/net8.0/ref/WestoverLaneReserve.dll
+/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/bin/Debug/net8.0/System.Security.Permissions.dll

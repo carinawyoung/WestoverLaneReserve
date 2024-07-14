@@ -7,9 +7,11 @@ using WestoverLaneReserve.Data;
 using WestoverLaneReserve.Models;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WestoverLaneReserve.Pages
 {
+    [Authorize]
     public class MyReservationsModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext

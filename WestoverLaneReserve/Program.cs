@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using WestoverLaneReserve.Data;
-using WestoverLaneReserve.Models; // Ensure this is added if ApplicationUser is in this namespace
+using WestoverLaneReserve.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -15,6 +15,11 @@ builder.Services.AddRazorPages();
 // Add DbContext using SQLite
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Index";
+});
 
 // Configure Identity
 builder.Services.AddDefaultIdentity<CustomerApplicationUser>(options =>

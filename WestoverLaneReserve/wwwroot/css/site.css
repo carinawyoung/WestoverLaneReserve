@@ -84,3 +84,9 @@ p {
   margin: 2rem;
 
 }
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+}

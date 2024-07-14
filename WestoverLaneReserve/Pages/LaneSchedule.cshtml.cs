@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,7 +9,7 @@ using WestoverLaneReserve.Models;
 
 namespace WestoverLaneReserve.Pages
 {
-    //public class LaneScheduleModel : PageModel
+    [Authorize]  // Only allow logged in users to access this page
     public class LaneScheduleModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext

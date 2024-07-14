@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/wwwroot/images/Westover.png",
+      "PackagePath": "staticwebassets/images/Westover.png"
+    },
+    {
+      "Id": "/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/wwwroot/images/Westover_Wide.svg",
+      "PackagePath": "staticwebassets/images/Westover_Wide.svg"
+    },
+    {
       "Id": "/Users/cyoung/dotNet_projects/Capstone_Swim_Lane_App/d424-software-engineering-capstone/WestoverLaneReserve/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
