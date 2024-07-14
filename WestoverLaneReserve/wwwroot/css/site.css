@@ -33,12 +33,12 @@ body {
 }
 
 .reservation-line {
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 10px; /* Optional: Add some padding for better spacing */
-    margin-bottom: 10px;  /* Optional: Add some margin for better spacing */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px; /* Optional: Add some padding for better spacing */
+  margin-bottom: 10px;  /* Optional: Add some margin for better spacing */
 }
 
 /*Remove the last border */
@@ -78,4 +78,9 @@ p {
 
 .first-p {
   margin-bottom: .5rem;
+}
+
+.change-week {
+  margin: 2rem;
+
 }

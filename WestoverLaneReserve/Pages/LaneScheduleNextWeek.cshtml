@@ -1,5 +1,5 @@
 @page
-@model LaneScheduleModel
+@model LaneScheduleNextWeekModel
 @{
     ViewData["Title"] = "Swim Lane Availability";
 }
@@ -16,17 +16,19 @@
 </div>
 }
 
-
-<div class="d-flex justify-content-end change-week">
-    <a asp-page="/LaneScheduleNextWeek" class="btn btn-primary" id="go-to-next-week">Next Week >></a>
+<div class="d-flex change-week">
+    <a asp-page="/LaneSchedule" class="btn btn-primary" id="go-to-current-week">
+        << Current Week</a>
 </div>
+
 <div class="container">
+
     <div class="row">
         <div class="col">&nbsp;</div><!-- Empty column for label alignment -->
-        @for (int col = 0; col < Model.WeekDates.Count; col++)
+        @for (int col = 0; col < Model.NextWeekDates.Count; col++)
         {
             <div class="col text-center">
-                <h6>@Model.WeekDates[col]</h6>
+                <h6>@Model.NextWeekDates[col]</h6>
             </div>
         }
     </div>
@@ -37,15 +39,15 @@
             <div class="col d-flex align-items-center justify-content-center">
                 <h6>@Model.Times[row]</h6>
             </div>
-            @for (int col = 0; col < Model.WeekDates.Count; col++)
+            @for (int col = 0; col < Model.NextWeekDates.Count; col++)
             {
-                string formattedDate = DateTime.ParseExact(Model.WeekDates[col], "ddd M/d",
+                string formattedDate = DateTime.ParseExact(Model.NextWeekDates[col], "ddd M/d",
                 System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
                 string formattedTime = DateTime.ParseExact(Model.Times[row], "h:mm tt",
                 System.Globalization.CultureInfo.InvariantCulture).ToString("HH:mm");
                 int lanesAvailable = Model.LaneAvailability[formattedDate][formattedTime];
 
-                var slotDateTime = DateTime.ParseExact($"{Model.WeekDates[col]} {Model.Times[row]}", "ddd M/d h:mm tt",
+                var slotDateTime = DateTime.ParseExact($"{Model.NextWeekDates[col]} {Model.Times[row]}", "ddd M/d h:mm tt",
                 System.Globalization.CultureInfo.InvariantCulture);
                 var isPast = slotDateTime < DateTime.Now;
                 var buttonClass = isPast ? "btn btn-secondary btn-block md-2" : "btn btn-primary btn-block mb-2";
@@ -55,7 +57,7 @@
                     <form method="post" asp-page-handler="Reserve">
                         <button type="submit" class="btn btn-primary btn-block mb-2" name="reserve"
                             value="@formattedDate,@formattedTime"
-                            onclick="return confirmReservation('@Model.WeekDates[col]', '@Model.Times[row]');"
+                            onclick="return confirmReservation('@Model.NextWeekDates[col]', '@Model.Times[row]');"
                             disabled="@isPast">
                             @lanesAvailable Lanes
                         </button>

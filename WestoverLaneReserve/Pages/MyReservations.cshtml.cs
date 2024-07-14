@@ -10,7 +10,6 @@ using System.Linq;
 
 namespace WestoverLaneReserve.Pages
 {
-    //public class LaneScheduleModel : PageModel
     public class MyReservationsModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext
