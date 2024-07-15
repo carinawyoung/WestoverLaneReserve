@@ -35,9 +35,9 @@ namespace WestoverLaneReserve.Pages
                 var today = DateTime.Today;
                 Reservations = _context.LaneReservations
                                         .Where(r => r.CustomerId == user.Id)
-                                        .ToList()
                                         .Where(r => DateTime.ParseExact(r.Date, "yyyy-MM-dd", CultureInfo.InvariantCulture) >= today)
                                         .ToList();
+
             }
 
             await LoadUser(); // Load user information so name will be in header
