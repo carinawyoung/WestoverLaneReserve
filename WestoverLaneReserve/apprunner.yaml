@@ -1,0 +1,15 @@
+version: 1.0
+runtime: dotnet
+build:
+  commands:
+    install:
+      - dotnet restore
+    pre_build:
+      - dotnet tool install -g Amazon.Lambda.Tools
+    build:
+      - dotnet publish -c Release -o /app
+
+run:
+  command: dotnet /app/WestoverLaneReserve.dll
+  network:
+    port: 8080
