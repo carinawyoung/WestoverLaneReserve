@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WestoverLaneReserve")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa6392af9b8c8f765ba76543782d401b770dacbe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b47fb2b4fc4590c8e8f3ccb47385a14be8769f1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("WestoverLaneReserve")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WestoverLaneReserve")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

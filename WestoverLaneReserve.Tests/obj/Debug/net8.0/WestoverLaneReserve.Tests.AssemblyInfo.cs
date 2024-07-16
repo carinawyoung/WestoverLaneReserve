@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WestoverLaneReserve.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e53a9a65c2afe84a2d0c119c6c9f6a9d60a6baa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b47fb2b4fc4590c8e8f3ccb47385a14be8769f1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("WestoverLaneReserve.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WestoverLaneReserve.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
