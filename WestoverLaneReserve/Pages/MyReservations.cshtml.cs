@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WestoverLaneReserve.Pages
 {
-    [Authorize]
+
     public class MyReservationsModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext
@@ -35,6 +35,7 @@ namespace WestoverLaneReserve.Pages
                 var today = DateTime.Today;
                 Reservations = _context.LaneReservations
                                         .Where(r => r.CustomerId == user.Id)
+                                        .ToList()
                                         .Where(r => DateTime.ParseExact(r.Date, "yyyy-MM-dd", CultureInfo.InvariantCulture) >= today)
                                         .ToList();
 

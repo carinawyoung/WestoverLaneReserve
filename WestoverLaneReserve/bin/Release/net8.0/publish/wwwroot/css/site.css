@@ -1,0 +1,104 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Start of code I added */
+
+.past-time { 
+  background-color: gray;
+}
+
+#Error-message {
+  transition: opacity 1s ease-out;
+  opacity: 1;
+}
+
+.reservation-line {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px; /* Optional: Add some padding for better spacing */
+  margin-bottom: 10px;  /* Optional: Add some margin for better spacing */
+}
+
+/*Remove the last border */
+.reservation-line:last-child {
+      border-bottom: none;
+}
+
+.cancel-form {
+  margin: 0;  /* Remove default margin */
+}
+
+.cancel-button {
+  background-color: #346ade; /* Example styling for the button */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.page-header {
+  text-align: center;
+}
+
+.btn:disabled, .btn.disabled, fieldset:disabled .btn {
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+p {
+  text-align: center;
+}
+
+.first-p {
+  margin-bottom: .5rem;
+}
+
+.change-week {
+  margin: 2rem;
+}
+
+.change-week-btn {
+  background-color: rgb(0, 66, 137);
+  border-color: rgb(0, 66, 137);
+}
+
+.change-week-btn:hover {
+  background-color: rgb(0, 83, 171);
+}
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+}
+
+.nav-item {
+  color: #346ade;
+}
