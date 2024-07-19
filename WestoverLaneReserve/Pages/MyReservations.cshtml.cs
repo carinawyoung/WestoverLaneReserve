@@ -44,6 +44,20 @@ namespace WestoverLaneReserve.Pages
             await LoadUser(); // Load user information so name will be in header
         }
 
+        // // If I wanted to use polymorphism to extend functionality
+        // public string UserLastName { get; set; }
+        // public new async Task LoadUser()
+        // {
+        //     var user = await UserManager.GetUserAsync(User);
+        //     if (user != null)
+        //     {
+        //         UserFirstName = user.FirstName;
+        //         UserLastName = user.LastName;
+        //         ViewData["UserFirstName"] = UserFirstName;
+        //         ViewData["UserLastName"] = UserLastName;
+        //     }
+        // }
+
         public async Task<IActionResult> OnPostCancelAsync(int id)
         {
             var reservation = await _context.LaneReservations.FindAsync(id);

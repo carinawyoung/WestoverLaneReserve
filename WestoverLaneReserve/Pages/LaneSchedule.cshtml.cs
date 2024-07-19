@@ -9,7 +9,6 @@ using WestoverLaneReserve.Models;
 
 namespace WestoverLaneReserve.Pages
 {
-    [Authorize]  // Only allow logged in users to access this page
     public class LaneScheduleModel : BasePageModel
     {
         private readonly ApplicationDbContext _context;  // Field for DbContext

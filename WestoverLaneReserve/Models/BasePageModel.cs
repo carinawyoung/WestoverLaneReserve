@@ -25,4 +25,16 @@ public class BasePageModel : PageModel
             ViewData["UserLastName"] = UserLastName;
         }
     }
+
+
+    //If I were to user polymorphism I could change the code to this:
+    //     public async Task LoadUser()
+    // {
+    //     var user = await UserManager.GetUserAsync(User);
+    //     if (user != null)
+    //     {
+    //         UserFirstName = user.FirstName;
+    //         ViewData["UserFirstName"] = UserFirstName;
+    //     }
+    // }
 }
