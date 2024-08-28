@@ -11,28 +11,33 @@ I containerized the file using Docker and deployed the app to the cloud. Check i
 
 ### Website screenshots:
 The sign-in page:
-
+<p>&nbsp;</p> 
 <img width="1794" alt="Sign-in page" src="images/Sign_In.jpg">
+<p>&nbsp;</p> 
 
 User registration page:
-
+<p>&nbsp;</p> 
 <img width="1794" alt="Registration page" src="images/User_Registration.jpg">
+<p>&nbsp;</p> 
 
-The website has two weeks available for reservations, the current week and the following week. Each available hour in a particular day has 6 lane slots. When a user clicks on a time slot, the lane availibility count goes down by one. Once the beginning of a slot time has started, the slot color mutes to a lighter blue, and the slot is no longer available for reservations. 
+The website has two weeks available for reservations, the current week and the following week. Each available hour in a particular day has 6 lane slots. When a user clicks on a time slot, the lane availibility count goes down by one. Once the beginning of a slot time has passed, the slot color mutes to a lighter blue, and the slot is no longer available for reservations. 
+<p>&nbsp;</p> 
 
 Current week:
-
+<p>&nbsp;</p> 
 <img width="1794" alt="Current week" src="images/Current_week.jpg">
+<p>&nbsp;</p> 
 
 Following week:
-
+<p>&nbsp;</p> 
 <img width="1794" alt="Next week" src="images/Next_week.jpg">
+<p>&nbsp;</p> 
 
 When a user clicks on a time slot, a reserve message pops up:
-
+<p>&nbsp;</p> 
 <img width="1794" alt="Reserve message" src="images/Reserve_message.jpg">
+<p>&nbsp;</p>
 
-&nbsp;  
 If they navigate to the "My Reservations" page, a user can see their upcoming reservations, and cancel reservations if needed:  
-&nbsp;  
+<p>&nbsp;</p>   
 <img width="1794" alt="User reservations" src="images/User_reservations.jpg">
