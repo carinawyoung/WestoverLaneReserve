@@ -51,11 +51,19 @@
                 // Define the time zone I'm working with:
                 TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
 
+
                 // Convert slotDateTime to the defined time zone
                 var slotDateTimeInZone = TimeZoneInfo.ConvertTime(slotDateTime, timeZone);
 
                 // Convert DateTime.Now to the defined time zone
                 var timeNowInZone = TimeZoneInfo.ConvertTime(DateTime.Now, timeZone);
+
+                ///
+                // Format as strings for JavaScript
+                string slotDateTimeInZoneString = slotDateTimeInZone.ToString("yyyy-MM-dd HH:mm:ss");
+                string timeNowInZoneString = timeNowInZone.ToString("yyyy-MM-dd HH:mm:ss");
+
+                ///
 
 
                 var isPast = slotDateTime < DateTime.Now;
@@ -73,12 +81,22 @@
                     </form>
 
                 </div>
+
+                <!-- JavaScript console logging for debugging -->
+                    //////
+                <script>
+                    console.log("Current time in zone:", "@timeNowInZoneString");
+                    console.log("Slot time in zone:", "@slotDateTimeInZoneString");
+                </script>
+                ////
             }
 
         </div>
     }
 
 </div>
+
+
 
 <script>
     function confirmReservation(date, time) {
