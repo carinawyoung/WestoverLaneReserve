@@ -47,6 +47,18 @@
 
                 var slotDateTime = DateTime.ParseExact($"{Model.WeekDates[col]} {Model.Times[row]}", "ddd M/d h:mm tt",
                 System.Globalization.CultureInfo.InvariantCulture);
+
+                @* // FIXME: Time slots showing incorrectly //////////////////////
+        // Define the time zone I'm working with:
+        TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+
+        // Convert slotDateTime to the defined time zone
+        var slotDateTimeInZone = TimeZoneInfo.ConvertTime(slotDateTime, timeZone);
+
+        // Convert DateTime.Now to the defined time zone
+        var timeNowInZone = TimeZoneInfo.ConvertTime(DateTime.Now, timeZone); *@
+
+
                 var isPast = slotDateTime < DateTime.Now;
                 var buttonClass = isPast ? "btn btn-secondary btn-block md-2" : "btn btn-primary btn-block mb-2";
 
